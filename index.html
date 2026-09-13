@@ -5,6 +5,7 @@
 <title>TPF South Howrah &mdash; Member Directory </title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
   :root{
     --navy:#0F1E5C; --navy-2:#17297A; --indigo:#2A3FA0;
     --green:#16A34A; --green-2:#0E7C38;
@@ -434,6 +435,37 @@ body{font-family:Arial,"Segoe UI",sans-serif;font-size:14px;line-height:1.42;}
 
 .tool-head{position:relative}.tool-close{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:9px;width:32px;height:32px;color:var(--muted);font-size:16px;cursor:pointer}.tool-close:hover{background:#f5f1e7;color:var(--navy)}
 .data-table th,.data-table td{overflow:hidden}.data-table td{overflow-wrap:anywhere}.data-table .name-cell{min-width:150px}.data-table .address-cell{max-width:240px}.data-table .contact-cell{min-width:170px}
+
+/* ===== PREMIUM VISUAL REFRESH ===== */
+:root{--blue:#3156C8;--line:#e8dfcc;--muted:#766b5b;--shadow2:0 16px 40px rgba(15,30,92,.11);--cream:#fffaf0;}
+body{font-family:Inter,Aptos,"Segoe UI",sans-serif;background:linear-gradient(180deg,#fffdf8 0%,#fbf7ed 100%);color:#20243a;}
+.letterhead{padding:34px 20px 28px;background:radial-gradient(circle at 78% 18%,rgba(255,194,77,.18),transparent 28%),linear-gradient(135deg,#08194f 0%,#132b78 58%,#2448a7 100%);}
+.letterhead:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:58px;background:linear-gradient(170deg,transparent 48%,rgba(255,255,255,.18) 49%,transparent 53%);pointer-events:none;}
+.wordmark{font-family:Poppins,Inter,sans-serif;font-size:clamp(25px,4vw,36px);letter-spacing:-.03em;text-shadow:0 3px 18px rgba(0,0,0,.18);}
+.page-title{font-family:Poppins,Inter,sans-serif;letter-spacing:-.02em;}
+.stat-row{gap:9px}.stat-chip{backdrop-filter:blur(10px);background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.2);box-shadow:0 8px 24px rgba(0,0,0,.08);}.stat-chip .num{font-family:Poppins,Inter,sans-serif;}
+.wrap{max-width:1340px;padding-top:18px;}
+.toolbar{background:rgba(255,252,245,.94);backdrop-filter:blur(14px);border-bottom:1px solid #eadfc8;box-shadow:0 8px 24px rgba(15,30,92,.05);border-radius:0 0 18px 18px;}
+.tab{font-weight:600;box-shadow:0 2px 8px rgba(15,30,92,.035);}.tab.active{box-shadow:0 7px 18px rgba(15,30,92,.18);}
+.search-wrap{border-color:#dfd3b8;box-shadow:0 5px 16px rgba(15,30,92,.05);}.search-wrap:focus-within{border-color:#3156c8;box-shadow:0 0 0 4px rgba(49,86,200,.10),0 8px 20px rgba(15,30,92,.07);}
+.icon-btn{border:1px solid #e0d4ba!important;background:#fff!important;color:#243467!important;box-shadow:0 3px 9px rgba(15,30,92,.05);}.icon-btn:hover{transform:translateY(-1px);box-shadow:0 7px 15px rgba(15,30,92,.11);}
+.home-btn{background:linear-gradient(135deg,#10276e,#3156c8)!important;color:#fff!important;}
+.manage-btn{background:linear-gradient(135deg,#fff8df,#fff2c5)!important;color:#76551a!important;}
+.table-scroll{border-radius:18px;box-shadow:0 12px 34px rgba(15,30,92,.09);}
+.data-table thead th{font-family:Poppins,Inter,sans-serif;letter-spacing:.025em;color:#26365f;background:linear-gradient(180deg,#fffefa,#f8f1df);}
+.data-table tbody tr:hover{background:#fffbef;}
+.data-table .name-text{color:#17295f;font-weight:600;}
+.avatar{box-shadow:0 4px 10px rgba(15,30,92,.15);}
+.tool-panel{border-color:#e6d8b8;background:linear-gradient(135deg,#fffdf8,#f8f4e9);box-shadow:var(--shadow2);}
+.tool-card{border-color:#e8ddc5;box-shadow:0 7px 20px rgba(15,30,92,.06);}.tool-card:hover{border-color:#d5c18e;transform:translateY(-3px);}
+.sync-panel{border-color:#d9c99f!important;background:linear-gradient(135deg,#fffdf7,#f8f3e6)!important;box-shadow:0 10px 24px rgba(15,30,92,.07)!important;}
+.sync-dot.busy{animation:syncPulse 1s infinite;}
+.sync-dot.error{background:#c0392b!important;box-shadow:0 0 0 4px rgba(192,57,43,.10)!important;}
+@keyframes syncPulse{50%{transform:scale(1.3);opacity:.55}}
+.is-syncing .table-scroll{opacity:.72;transition:opacity .2s ease;}.is-syncing #syncText{font-weight:700;}
+.source-status{padding:5px 9px!important;border-radius:999px!important;background:#eef8f1!important;color:#14733d!important;border:1px solid #cce8d5!important;}
+.source-fallback{background:#fff4df!important;color:#8a5a12!important;border-color:#efd59d!important;}
+@media(max-width:760px){.letterhead{padding-top:22px}.wordmark{font-size:24px}.stat-chip{padding:9px 12px}.toolbar{border-radius:0 0 14px 14px}.search-wrap{border-radius:14px}.table-scroll{border-radius:14px}.tool-grid{gap:9px}}
 </style>
 </head>
 <body>
@@ -452,8 +484,6 @@ body{font-family:Arial,"Segoe UI",sans-serif;font-size:14px;line-height:1.42;}
 </header>
 
 <main class="wrap">
-</div>
-
   <div class="toolbar">
     <div class="toolbar-main">
     <div class="tabs">
@@ -498,7 +528,7 @@ body{font-family:Arial,"Segoe UI",sans-serif;font-size:14px;line-height:1.42;}
         <button class="btn-ghost" id="googleOpenBtn2">↗ Open</button>
         <label class="btn-ghost" style="cursor:pointer"><input id="autoSync" type="checkbox" checked style="margin-right:5px"> Auto-sync 1 min</label>
       </div>
-      <div class="sync-note"><span class="sync-dot" id="syncDot"></span><span id="syncText">Linked Google Sheet. The directory keeps embedded data as a safe fallback.</span></div>
+      <div class="sync-note"><span class="sync-dot" id="syncDot"></span><span id="syncText">Ready • Latest Google Sheet data will replace the previous view only after a successful sync.</span></div>
     </div>
     <div class="adv-filters" id="advFilters">
       <label>Pincode<input id="advPincode" placeholder="e.g. 711102"></label>
@@ -928,23 +958,48 @@ const GOOGLE_SHEET_ID_DEFAULT = '1Pt-XxKhfWY9C-e30rdQrzdIj0e89McP_';
 let googleSyncTimer = null;
 let googleSyncBusy = false;
 
+function looksLikeGenericHeader(h){
+  const n=normHeader(h);
+  return !n || /^column\d+$/.test(n) || /^[a-z]$/.test(n);
+}
 function gvizRowsToParsed(data){
   if(!data || !data.table) throw new Error('Google Sheet returned no table data.');
-  const headers=(data.table.cols||[]).map((c,i)=>String(c.label||c.id||('Column '+(i+1))).trim());
-  const rows=(data.table.rows||[]).map(r=>headers.reduce((o,h,i)=>{const c=(r.c||[])[i]; o[h]=c && (c.f!=null ? String(c.f) : (c.v!=null ? String(c.v) : '')); return o;},{}));
+  const cols=data.table.cols||[];
+  let headers=cols.map((c,i)=>String(c.label||c.id||('Column '+(i+1))).trim());
+  let rawRows=(data.table.rows||[]).map(r=>(r.c||[]).map(c=>c && (c.f!=null ? String(c.f) : (c.v!=null ? String(c.v) : ''))));
+
+  // Google GViz can return generic A/B/C labels when the sheet/table headers
+  // are not interpreted as headers. Detect that case and promote row 1.
+  const generic=headers.length>0 && headers.every(looksLikeGenericHeader);
+  if(generic && rawRows.length){
+    const candidate=rawRows[0];
+    const likely=candidate.some(v=>['name','member name','full name','mobile','mobile number','gender','profession','occupation','address','dob','email','ewc','convenor','core team'].includes(normHeader(v)));
+    if(likely){
+      headers=candidate.map((h,i)=>String(h||'Column '+(i+1)).trim());
+      rawRows=rawRows.slice(1);
+    }
+  }
+  // De-duplicate blank/repeated headers so object mapping never overwrites data.
+  const used={};
+  headers=headers.map((h,i)=>{
+    let base=h||('Column '+(i+1)), key=normHeader(base), n=used[key]||0; used[key]=(n+1);
+    return n ? `${base} ${n+1}` : base;
+  });
+  const rows=rawRows.map(arr=>headers.reduce((o,h,i)=>{o[h]=arr[i]??'';return o;},{}));
   return {headers,rows};
 }
 function gvizFetch(sheetName, range){
   return new Promise((resolve,reject)=>{
     const cb='__tpf_gviz_'+Date.now()+'_'+Math.random().toString(36).slice(2);
     const script=document.createElement('script');
-    const timer=setTimeout(()=>{cleanup();reject(new Error('Google Sheet sync timed out. Check sharing permissions.'));},15000);
+    const timer=setTimeout(()=>{cleanup();reject(new Error('Google Sheet sync timed out. Check that the sheet is shared as Viewer.'));},20000);
     function cleanup(){clearTimeout(timer);delete window[cb];script.remove();}
-    window[cb]=(data)=>{cleanup();resolve(data)};
+    window[cb]=(data)=>{cleanup(); if(data && data.status==='error') reject(new Error(data.errors?.[0]?.detailed_message||data.errors?.[0]?.message||'Google returned an error.')); else resolve(data);};
     const id=(document.getElementById('googleSheetId')?.value||GOOGLE_SHEET_ID_DEFAULT).trim();
-    const params=new URLSearchParams({tqx:'responseHandler:'+cb,sheet:sheetName,range:range||''});
+    if(!id) return cleanup(),reject(new Error('Google Sheet ID is empty.'));
+    const params=new URLSearchParams({tqx:'responseHandler:'+cb,headers:'1',sheet:sheetName,range:range||'A:ZZZ'});
     script.src='https://docs.google.com/spreadsheets/d/'+encodeURIComponent(id)+'/gviz/tq?'+params.toString();
-    script.onerror=()=>{cleanup();reject(new Error('Could not reach Google Sheet. Make sure it is shared for viewing.'));};
+    script.onerror=()=>{cleanup();reject(new Error('Could not reach Google Sheet. Make sure the file is shared for viewing.'));};
     document.head.appendChild(script);
   });
 }
@@ -975,43 +1030,51 @@ function mergeGoogleRecords(existing,incoming,type){
   return {rows:out,updated,added};
 }
 async function syncGoogleSheet(){
-  if(googleSyncBusy) return; googleSyncBusy=true; setSyncUi('busy','Syncing Google Sheet… Smart Merge is protecting your local database.');
+  if(googleSyncBusy) return false;
+  googleSyncBusy=true;
+  setSyncUi('busy','SYNCING • Reading the latest Google Sheet…');
+  document.body.classList.add('is-syncing');
   try{
-    const [mData,fData]=await Promise.all([gvizFetch('Members',''),gvizFetch('Futura','')]);
+    const [mData,fData]=await Promise.all([gvizFetch(GOOGLE_SHEET_NAMES.members,'A:ZZZ'),gvizFetch(GOOGLE_SHEET_NAMES.futura,'A:ZZZ')]);
     const mp=gvizRowsToParsed(mData), fp=gvizRowsToParsed(fData);
     const mr=mp.rows.filter(r=>Object.values(r).some(v=>String(v).trim())).map((r,i)=>normalizeMemberRow(r,i));
     const fr=fp.rows.filter(r=>Object.values(r).some(v=>String(v).trim())).map((r,i)=>normalizeFuturaRow(r,i));
-    if(!mr.length) throw new Error('Google Sheet returned 0 Members.');
-    const baseline=MEMBERS.length||EMBEDDED_MEMBERS.length||1;
-    const fBaseline=FUTURA.length||EMBEDDED_FUTURA.length||1;
-    const fullMember=mr.length>=Math.max(20,Math.floor(baseline*0.8));
-    const fullFutura=fr.length>=Math.max(10,Math.floor(fBaseline*0.8));
-    let mInfo={updated:0,added:0}, fInfo={updated:0,added:0};
-    if(fullMember){
-      MEMBERS=mr; SOURCE_HEADERS.members=mp.headers; SOURCE_ROWS.members=mp.rows; SOURCE_STATUS.members='Google Sheet';
-    }else{
-      mInfo=mergeGoogleRecords(MEMBERS,mr,'members');
-      MEMBERS=mInfo.rows;
-      setSyncUi('busy','Google returned '+mr.length+' Members — merged '+mInfo.updated+' updates into '+MEMBERS.length+' local Members instead of replacing your database.');
-    }
-    if(fr.length){
-      if(fullFutura){ FUTURA=fr; SOURCE_HEADERS.futura=fp.headers; SOURCE_ROWS.futura=fp.rows; SOURCE_STATUS.futura='Google Sheet'; }
-      else { fInfo=mergeGoogleRecords(FUTURA,fr,'futura'); FUTURA=fInfo.rows; }
-    }
+    const validMembers=mr.filter(x=>x.name || x.mobile || x.email);
+    if(!validMembers.length) throw new Error('No usable Members found. Check the sheet name “Members” and Row 1 headings.');
+    if(validMembers.length<Math.max(5,Math.floor(EMBEDDED_MEMBERS.length*0.35))) throw new Error(`Only ${validMembers.length} usable Members were returned — sync stopped to protect your existing data.`);
+
+    // Replace the live dataset only after the complete response has been validated.
+    MEMBERS=validMembers;
+    FUTURA=fr;
+    SOURCE_HEADERS.members=mp.headers; SOURCE_ROWS.members=mp.rows; SOURCE_STATUS.members='Google Sheet • Live';
+    SOURCE_HEADERS.futura=fp.headers; SOURCE_ROWS.futura=fp.rows; SOURCE_STATUS.futura='Google Sheet • Live';
+    refreshCalculatedAges();
     state.filters.members={}; state.filters.futura={}; state.query='';
     document.querySelectorAll('[data-filter]').forEach(el=>el.value='');
     buildStats(); renderActive(); renderBirthdays(state.bdayScope);
-    const msg='Google synced • '+MEMBERS.length+' Members • '+FUTURA.length+' Futura'+(fullMember?'':' • Smart Merge: '+mInfo.updated+' member updates');
+    const stamp=new Date(); window.__tpfLastSync=stamp;
+    const msg=`LIVE • Google Sheet • ${MEMBERS.length} Members • ${FUTURA.length} Futura`;
     updateSourceStatus(msg);
-    setSyncUi('ok','Last synced '+new Date().toLocaleString()+' • '+msg);
+    setSyncUi('ok',`SYNCED • ${stamp.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})} • ${MEMBERS.length} Members • ${FUTURA.length} Futura`);
+    toast(`✓ Latest data loaded • ${MEMBERS.length} Members`);
     return true;
-  }catch(e){setSyncUi('','Sync failed — using local data. '+e.message); updateSourceStatus('Local data • '+MEMBERS.length+' Members'); return false;}
-  finally{googleSyncBusy=false;}
+  }catch(e){
+    setSyncUi('error',`SYNC FAILED • Keeping previous data • ${e.message}`);
+    updateSourceStatus(`Previous data kept • ${MEMBERS.length} Members`);
+    toast('Sync failed — previous data is safe');
+    return false;
+  }finally{
+    googleSyncBusy=false;
+    document.body.classList.remove('is-syncing');
+  }
 }
 function setSyncUi(state,text){const d=document.getElementById('syncDot'),t=document.getElementById('syncText'); if(d)d.className='sync-dot '+(state||''); if(t)t.textContent=text;}
 function configureAutoSync(){
   if(googleSyncTimer){clearInterval(googleSyncTimer);googleSyncTimer=null;}
-  const cb=document.getElementById('autoSync'); if(cb?.checked) googleSyncTimer=setInterval(syncGoogleSheet,60*1000);
+  const cb=document.getElementById('autoSync');
+  if(cb?.checked){
+    googleSyncTimer=setInterval(()=>{ if(!document.hidden) syncGoogleSheet(); },60*1000);
+  }
 }
 
 const state = {
@@ -1729,7 +1792,9 @@ function setupImport(){
   // Google sync starts automatically on load; if the sheet is unavailable, embedded local data remains available.
   const auto=document.getElementById('autoSync');
   if(auto){ auto.checked=true; configureAutoSync(); }
-  setTimeout(()=>syncGoogleSheet(),500);
+  setTimeout(()=>syncGoogleSheet(),350);
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden && document.getElementById('autoSync')?.checked) syncGoogleSheet(); });
+  window.addEventListener('focus',()=>{ if(document.getElementById('autoSync')?.checked && (!window.__tpfLastSync || Date.now()-window.__tpfLastSync.getTime()>60000)) syncGoogleSheet(); });
 }
 
 refreshCalculatedAges();
