@@ -464,7 +464,7 @@ body{font-family:Arial,"Segoe UI",sans-serif;font-size:14px;line-height:1.42;}
     </div>
     <div class="search-wrap">
       <svg viewBox="0 0 24 24"><path d="M10 2a8 8 0 1 0 4.9 14.3l5 5 1.4-1.4-5-5A8 8 0 0 0 10 2Zm0 2a6 6 0 1 1 0 12 6 6 0 0 1 0-12Z"/></svg>
-      <input id="globalSearch" placeholder="Search all columns…">
+      <input id="globalSearch" placeholder="Search every column — name, mobile, email, address, EWC…">
     </div>
     <button class="mobile-filter-toggle" id="mobileFilterToggle" type="button">⚙ Column filters</button>
     <div class="quickbar">
@@ -496,7 +496,7 @@ body{font-family:Arial,"Segoe UI",sans-serif;font-size:14px;line-height:1.42;}
         <input id="googleSheetId" type="text" value="1Pt-XxKhfWY9C-e30rdQrzdIj0e89McP_" placeholder="Google Sheet ID">
         <button class="btn-ghost" id="syncNowBtn">↻ Sync now</button>
         <button class="btn-ghost" id="googleOpenBtn2">↗ Open</button>
-        <label class="btn-ghost" style="cursor:pointer"><input id="autoSync" type="checkbox" style="margin-right:5px"> Auto-sync 1 min</label>
+        <label class="btn-ghost" style="cursor:pointer"><input id="autoSync" type="checkbox" checked style="margin-right:5px"> Auto-sync 1 min</label>
       </div>
       <div class="sync-note"><span class="sync-dot" id="syncDot"></span><span id="syncText">Linked Google Sheet. The directory keeps embedded data as a safe fallback.</span></div>
     </div>
@@ -767,6 +767,16 @@ function refreshCalculatedAges(){
   const refresh=arr=>arr.forEach(x=>{const a=ageFromDob(x.dob);if(a!==null)x.age=a;});
   refresh(MEMBERS); refresh(FUTURA);
 }
+function buildSearchIndex(normalized, raw){
+  const values = [];
+  if(raw) values.push(...Object.values(raw));
+  if(normalized) values.push(...Object.entries(normalized)
+    .filter(([k]) => !['_source','_search'].includes(k))
+    .map(([,v]) => v));
+  return values.filter(v => v !== null && v !== undefined)
+    .map(v => String(v).toLowerCase())
+    .join(' ');
+}
 function normalizeMemberRow(raw, i) {
   const addrHome = cleanText(pick(raw, ["Address","Home Address","Address Home","Residential Address","Home Address 1","Address (Home)"]));
   const addrOffice = cleanText(pick(raw, ["Office Address","Address Office","Business Address"]));
@@ -812,7 +822,7 @@ function normalizeMemberRow(raw, i) {
     coreTeam: cleanText(pick(raw, ["Core Team","CoreTeam","Core Team Member","Core Team Members"])),
   };
   x._source = raw;
-  x._search = Object.values(raw).filter(v => v !== null && v !== undefined).join(" ").toLowerCase();
+  x._search = buildSearchIndex(x, raw);
   return x;
 }
 function normalizeFuturaRow(raw, i) {
@@ -838,7 +848,7 @@ function normalizeFuturaRow(raw, i) {
     dob: cleanText(pick(raw, ["DOB","Date of Birth","Birth Date"])),
   };
   x._source = raw;
-  x._search = Object.values(raw).filter(v => v !== null && v !== undefined).join(" ").toLowerCase();
+  x._search = buildSearchIndex(x, raw);
   return x;
 }
 
@@ -967,7 +977,7 @@ function mergeGoogleRecords(existing,incoming,type){
 async function syncGoogleSheet(){
   if(googleSyncBusy) return; googleSyncBusy=true; setSyncUi('busy','Syncing Google Sheet… Smart Merge is protecting your local database.');
   try{
-    const [mData,fData]=await Promise.all([gvizFetch('Members','A1:AZ500'),gvizFetch('Futura','A1:AZ200')]);
+    const [mData,fData]=await Promise.all([gvizFetch('Members',''),gvizFetch('Futura','')]);
     const mp=gvizRowsToParsed(mData), fp=gvizRowsToParsed(fData);
     const mr=mp.rows.filter(r=>Object.values(r).some(v=>String(v).trim())).map((r,i)=>normalizeMemberRow(r,i));
     const fr=fp.rows.filter(r=>Object.values(r).some(v=>String(v).trim())).map((r,i)=>normalizeFuturaRow(r,i));
@@ -1716,7 +1726,10 @@ function setupImport(){
   document.getElementById('googleOpenBtn')?.addEventListener('click',()=>openExternal('https://docs.google.com/spreadsheets/d/'+encodeURIComponent(document.getElementById('googleSheetId')?.value||GOOGLE_SHEET_ID_DEFAULT)+'/edit'));
   document.getElementById('googleOpenBtn2')?.addEventListener('click',()=>openExternal('https://docs.google.com/spreadsheets/d/'+encodeURIComponent(document.getElementById('googleSheetId')?.value||GOOGLE_SHEET_ID_DEFAULT)+'/edit'));
   document.getElementById('autoSync')?.addEventListener('change',configureAutoSync);
-  // Start with a compact interface. Google sync is opt-in so local HTML never breaks if the sheet is unavailable.
+  // Google sync starts automatically on load; if the sheet is unavailable, embedded local data remains available.
+  const auto=document.getElementById('autoSync');
+  if(auto){ auto.checked=true; configureAutoSync(); }
+  setTimeout(()=>syncGoogleSheet(),500);
 }
 
 refreshCalculatedAges();
